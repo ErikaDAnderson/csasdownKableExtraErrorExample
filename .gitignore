@@ -22,7 +22,7 @@ techreport.tex
 *.knit.md
 *.log
 *.pdf
-*.png
+.png
 *.rda
 *.rds
 *.Rproj
