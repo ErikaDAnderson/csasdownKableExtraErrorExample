@@ -59,10 +59,11 @@ input_data_table <- function(tab,
   }
 
   names(tab) <- rosettafish::en2fr(names(tab), translate)
-  # csas_table(tab,
-  #            format = "latex",
-  #            caption = cap,
-  #            ...)
+  csas_table(tab,
+             format = "latex",
+             caption = cap,
+             repeat_header = FALSE,
+             ...)
 }
 input_data_table(d, translate = french)
 ```
@@ -84,10 +85,11 @@ input_data_table <- function(tab,
   tab$Data <- rosettafish::en2fr(tab$Data, translate, allow_missing = TRUE)
   names(tab) <- rosettafish::en2fr(names(tab), translate)
 
-  csas_table(tab,
+  csasdown::csas_table(tab,
              format = "latex",
              caption = cap,
              font_size = 10,
+             repeat_header = FALSE,
              ...)
 }
 input_data_table(d, translate = french)

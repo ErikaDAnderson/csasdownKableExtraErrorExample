@@ -96,35 +96,35 @@ read_csv(file.path("data", "multirow.csv")) %>%
   mutate_all(function(x){gsub("emph\\{", "\\\\emph\\{", x)}) %>%
   mutate(`Overarching goal` = ifelse(is.na(`Overarching goal`),
                                      "",
-                                     `Overarching goal`)) 
-#%>%
-#   csas_table(format = "latex",
-#              escape = FALSE,
-#              font_size = 11,
-#              caption = ifelse(french,
-#                               "French goes here",
-#                               "Goals and performance metrics")) %>%
-#   kableExtra::row_spec(1, extra_latex_after = "\\cmidrule(l){2-2}") %>% 
-#   kableExtra::row_spec(2, extra_latex_after = "\\cmidrule(l){2-2}") %>% 
-#   kableExtra::row_spec(3, extra_latex_after = "\\cmidrule(l){2-2}") %>% 
-#   kableExtra::row_spec(4, hline_after = TRUE) %>% 
-#   kableExtra::row_spec(5, extra_latex_after = "\\cmidrule(l){2-2}") %>% 
-#   kableExtra::row_spec(6, extra_latex_after = "\\cmidrule(l){2-2}") %>% 
-#   kableExtra::row_spec(7, extra_latex_after = "\\cmidrule(l){2-2}") %>% 
-#   kableExtra::row_spec(8, extra_latex_after = "\\cmidrule(l){2-2}") %>% 
-#   kableExtra::row_spec(9, extra_latex_after = "\\cmidrule(l){2-2}") %>% 
-#   kableExtra::row_spec(10, hline_after = TRUE) %>% 
-#   kableExtra::row_spec(11, extra_latex_after = "\\cmidrule(l){2-2}") %>% 
-#   kableExtra::row_spec(12, extra_latex_after = "\\cmidrule(l){2-2}") %>% 
-#   kableExtra::row_spec(13, extra_latex_after = "\\cmidrule(l){2-2}") %>% 
-#   kableExtra::row_spec(14, extra_latex_after = "\\cmidrule(l){2-2}") %>% 
-#   kableExtra::row_spec(15, hline_after = TRUE) %>% 
-#   kableExtra::row_spec(16, hline_after = TRUE) %>% 
-#   kableExtra::row_spec(17, extra_latex_after = "\\cmidrule(l){2-2}") %>% 
-#   kableExtra::row_spec(18, extra_latex_after = "\\cmidrule(l){2-2}") %>% 
-#   kableExtra::row_spec(19, hline_after = TRUE) %>% 
-#   kableExtra::column_spec(1, width = "15em") %>%
-#   kableExtra::column_spec(2, width = "30em")
+                                     `Overarching goal`)) %>%
+  csas_table(format = "latex",
+             escape = FALSE,
+             font_size = 11,
+             repeat_header = FALSE,
+             caption = ifelse(french,
+                              "French goes here",
+                              "Goals and performance metrics")) %>%
+  kableExtra::row_spec(1, extra_latex_after = "\\cmidrule(l){2-2}") %>%
+  kableExtra::row_spec(2, extra_latex_after = "\\cmidrule(l){2-2}") %>%
+  kableExtra::row_spec(3, extra_latex_after = "\\cmidrule(l){2-2}") %>%
+  kableExtra::row_spec(4, hline_after = TRUE) %>%
+  kableExtra::row_spec(5, extra_latex_after = "\\cmidrule(l){2-2}") %>%
+  kableExtra::row_spec(6, extra_latex_after = "\\cmidrule(l){2-2}") %>%
+  kableExtra::row_spec(7, extra_latex_after = "\\cmidrule(l){2-2}") %>%
+  kableExtra::row_spec(8, extra_latex_after = "\\cmidrule(l){2-2}") %>%
+  kableExtra::row_spec(9, extra_latex_after = "\\cmidrule(l){2-2}") %>%
+  kableExtra::row_spec(10, hline_after = TRUE) %>%
+  kableExtra::row_spec(11, extra_latex_after = "\\cmidrule(l){2-2}") %>%
+  kableExtra::row_spec(12, extra_latex_after = "\\cmidrule(l){2-2}") %>%
+  kableExtra::row_spec(13, extra_latex_after = "\\cmidrule(l){2-2}") %>%
+  kableExtra::row_spec(14, extra_latex_after = "\\cmidrule(l){2-2}") %>%
+  kableExtra::row_spec(15, hline_after = TRUE) %>%
+  kableExtra::row_spec(16, hline_after = TRUE) %>%
+  kableExtra::row_spec(17, extra_latex_after = "\\cmidrule(l){2-2}") %>%
+  kableExtra::row_spec(18, extra_latex_after = "\\cmidrule(l){2-2}") %>%
+  kableExtra::row_spec(19, hline_after = TRUE) %>%
+  kableExtra::column_spec(1, width = "15em") %>%
+  kableExtra::column_spec(2, width = "30em")
 
 ```
 
@@ -146,11 +146,13 @@ widelong <- matrix(round(rnorm(length(yrs) * length(ages), 20), 4),
   dimnames = list(year = yrs, age = ages))
 widelong_df <- data.frame(cbind(yrs, widelong))
 
-# csasdown::csas_table(widelong_df,
-#   col.names = c("Year", as.character(ages)),
-#   caption = "A long and wide table",
-#   format = "latex",
-#   font_size = 8)
+csasdown::csas_table(widelong_df,
+  col.names = c("Year", as.character(ages)),
+  caption = "A long and wide table",
+  format = "latex",
+  font_size = 8,
+  repeat_header = FALSE
+  )
 ```
 \end{landscapepage}
 \clearpage
