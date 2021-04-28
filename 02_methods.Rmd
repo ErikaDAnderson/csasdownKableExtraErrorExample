@@ -149,9 +149,10 @@ widelong_df <- data.frame(cbind(yrs, widelong))
 csasdown::csas_table(widelong_df,
   col.names = c("Year", as.character(ages)),
   caption = "A long and wide table",
-  format = "latex",
-  font_size = 8,
-  repeat_header = FALSE
+  #format = "latex",
+  font_size = 8
+  # ,
+  # repeat_header = FALSE
   )
 ```
 \end{landscapepage}
